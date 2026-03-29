@@ -1,66 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&display=swap');
+
 :root {
-  color-scheme: light;
-  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background: #f4f6fb;
-  color: #111827;
+  --red: #d9000d;
+  --black: #0a0a0a;
+  --off-white: #f5f2ec;
+  --mid-gray: #6b6b6b;
+  --border: #e0dbd2;
 }
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
-  min-height: 100vh;
+  background: var(--off-white);
+  color: var(--black);
+  font-family: 'Inter', system-ui, sans-serif;
   line-height: 1.5;
-  background: #eff3fb;
+  min-height: 100vh;
 }
 
 #root {
-  padding: 2rem;
+  min-height: 100vh;
 }
 
 .app-shell {
-  max-width: 1000px;
+  max-width: 1100px;
   margin: 0 auto;
+  padding: 0 1.5rem 4rem;
 }
 
-.hero {
-  margin-bottom: 2rem;
-  padding: 2rem;
-  border-radius: 24px;
-  background: linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%);
+/* ── Masthead ── */
+.masthead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 0;
+  border-bottom: 3px solid var(--black);
+  margin-bottom: 0;
+}
+
+.masthead-name {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--black);
+}
+
+.masthead-name span {
+  color: var(--red);
+}
+
+.masthead-date {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mid-gray);
+}
+
+/* ── Ticker bar ── */
+.ticker-bar {
+  background: var(--red);
   color: white;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.45rem 1rem;
+  margin-bottom: 2.5rem;
 }
 
-.hero h1 {
-  margin: 0 0 0.5rem;
-  font-size: clamp(2rem, 4vw, 3.5rem);
+/* ── Hero / Featured article ── */
+.hero-article {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  padding: 2rem 0 2rem;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 2.5rem;
 }
 
-.hero p {
-  margin: 0;
-  max-width: 36rem;
+.hero-label {
+  display: inline-block;
+  background: var(--red);
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.65rem;
+  margin-bottom: 1rem;
 }
 
+.hero-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+
+.hero-meta {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mid-gray);
+  margin-bottom: 1rem;
+  border-left: 3px solid var(--red);
+  padding-left: 0.6rem;
+}
+
+.hero-content {
+  font-size: 1.05rem;
+  color: #333;
+  line-height: 1.7;
+}
+
+.hero-image-placeholder {
+  background: var(--black);
+  border-radius: 2px;
+  min-height: 280px;
+  display: flex;
+  align-items: flex-end;
+  padding: 1.25rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-image-placeholder::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    #1a1a1a 0px,
+    #1a1a1a 20px,
+    #111 20px,
+    #111 40px
+  );
+  opacity: 0.6;
+}
+
+.hero-image-tag {
+  position: relative;
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: var(--red);
+  padding: 0.3rem 0.6rem;
+}
+
+/* ── Section label ── */
+.section-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 2px;
+  background: var(--border);
+}
+
+/* ── News grid ── */
 .news-grid {
   display: grid;
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0;
 }
 
+/* ── Card ── */
 .card {
-  background: white;
-  border-radius: 1rem;
-  padding: 1.5rem;
-  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+  padding: 1.5rem 1.5rem 1.5rem 0;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.card:last-child {
+  border-right: none;
+}
+
+.card-category {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 0.6rem;
 }
 
 .card h2 {
-  margin: 0 0 0.75rem;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.75rem;
+  color: var(--black);
+}
+
+.card h2:hover {
+  color: var(--red);
+  cursor: pointer;
 }
 
 .card .meta {
-  margin: 0 1rem 1rem 0;
-  color: #6b7280;
-  font-size: 0.95rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--mid-gray);
+  margin-bottom: 0.75rem;
+}
+
+.card p:last-child {
+  font-size: 0.92rem;
+  color: #444;
+  line-height: 1.65;
+}
+
+.card-divider {
+  width: 28px;
+  height: 3px;
+  background: var(--red);
+  margin-bottom: 1rem;
+}
+
+/* ── Footer strip ── */
+.footer-strip {
+  margin-top: 3rem;
+  padding-top: 1.25rem;
+  border-top: 3px solid var(--black);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mid-gray);
+}
+
+.footer-strip strong {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 900;
+  color: var(--black);
+}
+
+@media (max-width: 640px) {
+  .hero-article {
+    grid-template-columns: 1fr;
+  }
+  .hero-image-placeholder {
+    min-height: 180px;
+    order: -1;
+  }
+  .card {
+    border-right: none;
+    padding-right: 0;
+  }
 }
